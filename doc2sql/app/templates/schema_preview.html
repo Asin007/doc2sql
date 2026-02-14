@@ -1,0 +1,22 @@
+<table class="min-w-full border mt-6">
+<thead>
+<tr>
+    <th>Column</th>
+    <th>Type</th>
+    <th>Nulls</th>
+    <th>Unique</th>
+    <th>Sample</th>
+</tr>
+</thead>
+<tbody>
+{% for col in column_details %}
+<tr>
+    <td>{{ col.column_name }}</td>
+    <td>{{ col.sql_type }}</td>
+    <td>{{ col.null_count }}</td>
+    <td>{{ col.unique_count }}</td>
+    <td>{{ col.sample_values }}</td>
+</tr>
+{% endfor %}
+</tbody>
+</table>

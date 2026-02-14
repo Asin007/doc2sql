@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ingestion History</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<h1>Ingestion History</h1>
+
+<a href="/">← Back to Home</a>
+
+<br><br>
+
+<table border="1" cellpadding="8" cellspacing="0">
+    <thead>
+        <tr>
+            <th>File Name</th>
+            <th>Table Name</th>
+            <th>Rows Inserted</th>
+            <th>Status</th>
+            <th>Foreign Keys</th>
+            <th>Created At</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for row in history %}
+        <tr>
+            <td>{{ row.file_name }}</td>
+            <td>{{ row.table_name }}</td>
+            <td>{{ row.rows_inserted }}</td>
+            <td>
+                {% if row.status == "success" %}
+                    <span style="color: green;">{{ row.status }}</span>
+                {% else %}
+                    <span style="color: red;">{{ row.status }}</span>
+                {% endif %}
+            </td>
+            <td>
+                {% if row.foreign_keys %}
+                    {{ row.foreign_keys }}
+                {% else %}
+                    None
+                {% endif %}
+            </td>
+            <td>{{ row.created_at }}</td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+</body>
+</html>

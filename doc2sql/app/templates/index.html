@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Doc2SQL ETL</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+
+<div class="background"></div>
+
+<div class="container">
+
+    <div class="card fade-in">
+        <h1>🚀 Doc2SQL</h1>
+        <p class="subtitle">Intelligent Document → Database ETL Engine</p>
+
+        <form id="ingestForm" action="/ingest" method="post" enctype="multipart/form-data">
+            <div class="disclaimer-box">
+                <strong>Supported File Types:</strong>
+                <ul>
+                    <li>CSV (.csv)</li>
+                    <li>Excel (.xlsx)</li>
+                    <li>PDF (Text-based & Scanned via OCR)</li>
+                    <li>Word Documents (.docx)</li>
+                </ul>
+                <p>
+                    Maximum recommended file size: 10MB.<br>
+                    Scanned PDFs may take longer due to OCR processing.
+                </p>
+            </div>
+
+            <div class="section">
+                <h3>Database Credentials</h3>
+
+                <input type="text" name="db_host" placeholder="DB Host (e.g. localhost:5432)" required>
+                <input type="text" name="db_name" placeholder="Database Name" required>
+                <input type="text" name="db_user" placeholder="DB User" required>
+                <input type="password" name="db_password" placeholder="DB Password" required>
+            </div>
+
+            <div class="section">
+                <h3>Upload Document</h3>
+                <input type="file" name="file" required>
+            </div>
+
+            <button type="submit" class="btn-primary">
+                Ingest File
+            </button>
+
+            <div id="loader" class="loader hidden"></div>
+        </form>
+
+        <div class="links">
+            <a href="/tables">View Tables</a>
+            <a href="/history">View Ingestion History</a>
+        </div>
+    </div>
+
+</div>
+
+<script>
+    const form = document.getElementById("ingestForm");
+    const loader = document.getElementById("loader");
+
+    form.addEventListener("submit", function () {
+        loader.classList.remove("hidden");
+    });
+</script>
+
+</body>
+</html>
