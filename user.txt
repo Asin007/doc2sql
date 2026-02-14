@@ -1,4 +1,0 @@
-DB_HOST=ep-still-dew-ai7s2wsc-pooler.c-4.us-east-1.aws.neon.tech
-DB_NAME=neondb
-DB_USER=neondb_owner
-DB_PASSWORD=npg_vKQPZeqA4l3y
